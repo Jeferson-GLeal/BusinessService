@@ -1,3 +1,6 @@
+# Arquitetura SaaS para PDV
+
+```mermaid
 flowchart TD
     subgraph Frontend [Frontend (Flutter)]
         A[Android App]
@@ -13,20 +16,20 @@ flowchart TD
     GBL[Gateway Business Layer (Spring)\nRegras de negócio, segurança, orquestração] --> MS
 
     subgraph MS [Microsserviços (Spring Boot)]
-        MS1[ms-authorization\nAutenticação, login, permissões]
-        MS2[ms-users\nGestão de usuários e perfis]
-        MS3[ms-clients\nCadastro de clientes, fidelidade]
-        MS4[ms-sales\nVendas PDV, NFC-e, promoções]
-        MS5[ms-products\nCatálogo de produtos]
-        MS6[ms-stock\nControle de estoque, inventário]
-        MS7[ms-payments\nIntegração com meios de pagamento]
-        MS8[ms-finance\nFluxo de caixa, contas, bancos]
-        MS9[ms-reports\nRelatórios, BI, dashboards]
-        MS10[ms-integration\nSEFAZ, ERP, sistemas externos]
-        MS11[ms-notifications\nAlertas, push, e-mails]
-        MS12[ms-audit\nAuditoria e logs]
-        MS13[ms-security\nProteção contra fraudes]
-        MS14[ms-monitoring\nMétricas e observabilidade]
+        MS1[ms-authorization]
+        MS2[ms-users]
+        MS3[ms-clients]
+        MS4[ms-sales]
+        MS5[ms-products]
+        MS6[ms-stock]
+        MS7[ms-payments]
+        MS8[ms-finance]
+        MS9[ms-reports]
+        MS10[ms-integration]
+        MS11[ms-notifications]
+        MS12[ms-audit]
+        MS13[ms-security]
+        MS14[ms-monitoring]
     end
 
     MS --> GW_IaaS
@@ -34,9 +37,9 @@ flowchart TD
 
     subgraph AWS [Infraestrutura AWS (IaaS/PaaS)]
         AWS1[EC2/EKS (Compute)]
-        AWS2[S3 (Storage)\nNotas, documentos]
-        AWS3[RDS/DynamoDB\nDados PDV]
-        AWS4[IAM/WAF\nSegurança]
+        AWS2[S3 (Storage)]
+        AWS3[RDS/DynamoDB (Banco de Dados)]
+        AWS4[IAM/WAF (Segurança)]
         AWS5[CloudWatch (Monitoramento)]
         AWS6[Lambda (Serverless)]
     end
