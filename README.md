@@ -13,21 +13,43 @@
 - Aplica políticas de segurança.
 - Orquestra chamadas entre microsserviços.
 
-## Microsserviços (Spring Boot)
-- **ms-authorization** → autenticação e permissões.
-- **ms-users** → gestão de usuários.
-- **ms-clients** → cadastro de clientes e fidelidade.
-- **ms-sales** → vendas e emissão de notas fiscais.
-- **ms-products** → catálogo de produtos.
-- **ms-stock** → controle de estoque.
-- **ms-payments** → integração com meios de pagamento.
-- **ms-finance** → fluxo de caixa e contas.
-- **ms-reports** → relatórios e BI.
-- **ms-integration** → integração com SEFAZ e ERP.
-- **ms-notifications** → alertas e e-mails.
-- **ms-audit** → auditoria e logs.
-- **ms-security** → proteção contra fraudes.
-- **ms-monitoring** → métricas e observabilidade.
+# 🧩 Microsserviços — Visão Geral
+
+A arquitetura é composta por diversos microsserviços independentes, cada um responsável por uma parte específica do domínio, garantindo escalabilidade, isolamento e fácil manutenção.
+
+## 👤 Identidade & Acesso
+- **ms-users** — Gestão de usuários e perfis  
+- **ms-authorization** — Autenticação, autorização e tokens  
+
+## 🧭 Clientes & Vendas
+- **ms-clients** — Cadastro e fidelidade de clientes  
+- **ms-sales** — Pedidos, vendas PDV/e-commerce e documentos fiscais  
+
+## 🛍️ Produtos & Estoque
+- **ms-products** — Catálogo e regras comerciais  
+- **ms-inventory** — Controle de estoque, movimentações e inventário  
+
+## 💳 Pagamentos & Financeiro
+- **ms-payments** — Integração com meios de pagamento  
+- **ms-finance** — Fluxo financeiro, conciliações e contas  
+
+## 📊 Relatórios & Documentos
+- **ms-reports** — Relatórios, métricas e dashboards  
+- **ms-documents** — Notas fiscais, XMLs, anexos e documentos digitais  
+
+## 🔗 Integração & Comunicação
+- **ms-integration** — Conexão com ERP, SEFAZ e serviços externos  
+- **ms-communication** — Canal interno/externo de mensagens e campanhas  
+- **ms-notifications** — E-mail, SMS, push e webhooks de saída  
+- **ms-receiver** — Entrada de webhooks e mensagens externas  
+
+## 🛡️ Segurança, Auditoria & Observabilidade
+- **ms-security** — Antifraude e políticas de segurança  
+- **ms-audit** — Auditoria e trilhas de atividades  
+- **ms-monitoring** — Logs, métricas e tracing  
+- **ms-events** — Publicação e consumo de eventos (event-driven)  
+
+---
 
 ## Gateway IaaS
 - Ponte entre microsserviços e infraestrutura.
@@ -67,27 +89,28 @@
                          └──────────────────────────────────────────────┘
                                                 │
                                                 ▼
-                  ┌─────────────────────────────────────────────────────────────┐
-                  │                   Microsserviços (Spring Boot)              │
-                  │ ┌─────────────────────────────────────────────────────────┐ │
-                  │ │ ms-authorization   → autenticação, login, permissões    │ │
-                  │ │ ms-users           → gestão de usuários e perfis        │ │
-                  │ │ ms-clients         → cadastro de clientes, fidelidade   │ │
-                  │ │ ms-sales           → vendas PDV, NFC-e, promoções       │ │
-                  │ │ ms-products        → catálogo de produtos               │ │
-                  │ │ ms-stock           → controle de estoque, inventário    │ │
-                  │ │ ms-payments        → integração com meios de pagamento  │ │
-                  │ │ ms-finance         → fluxo de caixa, contas, bancos     │ │
-                  │ │ ms-reports         → relatórios, BI, dashboards         │ │
-                  │ │ ms-integration     → SEFAZ, ERP, sistemas externos      │ │
-                  │ │ ms-notifications   → alertas, push, e-mails             │ │
-                  │ │ ms-audit           → auditoria e logs                   │ │
-                  │ │ ms-security        → proteção contra fraudes            │ │
-                  │ │ ms-monitoring      → métricas e observabilidade         │ │
-                  │ └─────────────────────────────────────────────────────────┘ │
-                  │   Segmentos atendidos: mercados, padarias, escolas,         │
-                  │   depósitos de materiais, oficinas, funilarias, farmácias   │
-                  └─────────────────────────────────────────────────────────────┘
+      ┌────────────────────────────────────────────────────────────────────────────────────────┐
+      │                             Microsserviços (Spring Boot)                               │
+      │                                                                                        │
+      │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
+      │ │  ms-users        │  │  ms-payments     │  │  ms-finance      │  │  ms-security     │ │
+      │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
+      │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
+      │ │  ms-clients      │  │  ms-sales        │  │  ms-reports      │  │  ms-monitoring   │ │
+      │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
+      │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
+      │ │  ms-authorization│  │  ms-products     │  │  ms-integration  │  │  ms-receiver     │ │
+      │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
+      │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
+      │ │  ms-notifications│  │  ms-inventory    │  │  ms-audit        │  │  ms-events       │ │
+      │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
+      │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
+      │ │  ms-documents    │  │  ms-inventory    │  │  ms-audit        │  │  ms-communication│ │
+      │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
+      │                                                                                        │
+      │                 Segmentos atendidos: mercados, padarias, escolas,                      │
+      │                 depósitos de materiais, oficinas, funilarias, farmácias                │
+      └────────────────────────────────────────────────────────────────────────────────────────┘
                                                │
                                                ▼
                          ┌───────────────────────────────────────────┐
