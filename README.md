@@ -1,3 +1,43 @@
+# 🏬 Plataforma Omnichannel para Varejo — Microsserviços Java
+
+Este projeto implementa uma **plataforma omnichannel completa** para operações de varejo, integrando:
+
+- **PDV**
+- **ERP**
+- **E-commerce**
+- **Estoque**
+- **Pagamentos**
+- **Comunicação multicanal**
+
+## ⚙️ Arquitetura
+A arquitetura é baseada em **microsserviços Java (Spring Boot)**, com foco em:
+- Escalabilidade
+- Segurança
+- Alto desempenho
+- Integração entre múltiplos canais
+
+## 📦 Funcionalidades
+A solução abrange:
+- Cadastro de produtos  
+- Controle de estoque  
+- Vendas e pagamentos  
+- Integrações fiscais  
+- Auditoria  
+- Mensageria  
+- Observabilidade  
+
+Oferecendo uma estrutura moderna para negócios de **pequeno, médio e grande porte**.
+
+## 🔗 Comunicação entre serviços
+A comunicação ocorre por:
+- **REST APIs**
+- **Eventos assíncronos**
+- **Mensageria**: Kafka / RabbitMQ / AWS SQS  
+
+Garantindo uma plataforma **distribuída, resiliente e preparada para operações de alto volume**.
+
+---
+
 ## Frontend (Flutter)
 - Aplicações multiplataforma (Android, iOS e Web).
 - Interface para PDV e dashboards de gestão.
