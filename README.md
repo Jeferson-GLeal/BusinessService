@@ -93,19 +93,19 @@ A arquitetura é composta por diversos microsserviços independentes, cada um re
                           │                             Microsserviços (Spring Boot)                               │
                           │                                                                                        │
                           │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
-                          │ │  ms-users        │  │  ms-payments     │  │  ms-finance      │  │  ms-security     │ │
+                          │ │ ms-users         │  │ ms-payments      │  │ ms-finance       │  │ ms-security      │ │
                           │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
                           │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
-                          │ │  ms-clients      │  │  ms-sales        │  │  ms-reports      │  │  ms-monitoring   │ │
+                          │ │ ms-clients       │  │ ms-sales         │  │ ms-reports       │  │ ms-monitoring    │ │
                           │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
                           │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
-                          │ │  ms-authorization│  │  ms-products     │  │  ms-integration  │  │  ms-receiver     │ │
+                          │ │ ms-authorization │  │ ms-products      │  │ ms-integration   │  │ ms-receiver      │ │
                           │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
                           │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
-                          │ │  ms-notifications│  │  ms-inventory    │  │  ms-audit        │  │  ms-events       │ │
+                          │ │ ms-notifications │  │ ms-inventory     │  │ ms-audit         │  │ ms-events        │ │
                           │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
                           │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
-                          │ │  ms-documents    │  │  ms-inventory    │  │  ms-audit        │  │  ms-communication│ │
+                          │ │ ms-documents     │  │ ms-inventory     │  │ ms-audit         │  │ ms-communication │ │
                           │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
                           │                                                                                        │
                           │                 Segmentos atendidos: mercados, padarias, escolas,                      │
@@ -131,6 +131,6 @@ A arquitetura é composta por diversos microsserviços independentes, cada um re
                              │ │ SNS / SQS / EventBridge       │ SES / Pinpoint / API Gateway              │ │
                              │ │ (Mensageria & Eventos →       │ (Comunicação interna/externa →            │ │
                              │ │ suporte ao **ms-events**)     │ suporte ao **ms-communication**)          │ │
-                             │ └───────────────────────────────┴────────────────────────────────── ────────┘ │
+                             │ └───────────────────────────────┴───────────────────────────────────────────┘ │
                              └───────────────────────────────────────────────────────────────────────────────┘
 
