@@ -1,4 +1,4 @@
-# 🏬 Plataforma Omnichannel para Varejo — Microsserviços Java
+# 🏬 Plataforma Omnichannel para Varejo — Flutter + Microsserviços Java + AWS
 
 Este projeto implementa uma **plataforma omnichannel completa** para operações de varejo, integrando:
 
