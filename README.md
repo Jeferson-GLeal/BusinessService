@@ -38,20 +38,22 @@ Garantindo uma plataforma **distribuída, resiliente e preparada para operaçõe
 
 ---
 
-## Frontend (Flutter)
-- Aplicações multiplataforma (Android, iOS e Web).
-- Interface para PDV e dashboards de gestão.
-- Único código reduz custo e acelera entregas.
+## 📱 Frontend (Flutter)
+- Aplicações multiplataforma (Android, iOS e Web).  
+- Interface para PDV e dashboards de gestão.  
+- Único código reduz custo e acelera entregas.  
 
-## BFF (Backend for Frontend - Spring)
-- Camada intermediária entre frontend e backend.
-- Adapta APIs para cada tipo de cliente (mobile ou web).
-- Simplifica comunicação e melhora performance.
+## 🖥️ BFF (Backend for Frontend - Spring)
+- Camada intermediária entre frontend e backend.  
+- Adapta APIs para cada tipo de cliente (mobile ou web).  
+- Simplifica comunicação e melhora performance.  
 
-## Gateway Business Layer (Spring)
-- Centraliza regras de negócio.
-- Aplica políticas de segurança.
-- Orquestra chamadas entre microsserviços.
+## 🛡️ Gateway Business Layer (Spring)
+- Centraliza regras de negócio.  
+- Aplica políticas de segurança.  
+- Orquestra chamadas entre microsserviços.  
+
+---
 
 # 🧩 Microsserviços — Visão Geral
 
@@ -91,18 +93,19 @@ A arquitetura é composta por diversos microsserviços independentes, cada um re
 
 ---
 
-## Gateway IaaS
-- Ponte entre microsserviços e infraestrutura.
-- Orquestra tráfego e abstrai recursos da nuvem.
-- Garante segurança e controle de rede.
+## 🌐 Gateway IaaS
+- Ponte entre microsserviços e infraestrutura.  
+- Orquestra tráfego e abstrai recursos da nuvem.  
+- Garante segurança e controle de rede.  
 
-## Infraestrutura AWS (IaaS/PaaS)
-- **EC2/EKS** → execução e orquestração de containers.
-- **S3** → armazenamento de documentos e notas.
-- **RDS/DynamoDB** → bancos de dados relacionais e NoSQL.
-- **IAM/WAF** → segurança e controle de acessos.
-- **CloudWatch** → monitoramento.
-- **Lambda** → funções serverless.
+## ☁️ Infraestrutura AWS (IaaS/PaaS)
+- **EC2/EKS** → execução e orquestração de containers  
+- **S3** → armazenamento de documentos e notas  
+- **RDS/DynamoDB** → bancos de dados relacionais e NoSQL  
+- **IAM/WAF** → segurança e controle de acessos  
+- **CloudWatch** → monitoramento  
+- **Lambda** → funções serverless  
+
 
 
                                                       ┌───────────────────────────┐
