@@ -1,45 +1,62 @@
-# Arquitetura SaaS para PDV
-
-```mermaid
-flowchart TD
-    subgraph Frontend [Frontend (Flutter)]
-        A[Android App]
-        B[iOS App]
-        C[Web (PDV, Dashboard)]
-    end
-
-    A --> BFF
-    B --> BFF
-    C --> BFF
-
-    BFF[BFF (Backend for Frontend - Spring)\nAdapta APIs para cada tipo de cliente] --> GBL
-    GBL[Gateway Business Layer (Spring)\nRegras de negócio, segurança, orquestração] --> MS
-
-    subgraph MS [Microsserviços (Spring Boot)]
-        MS1[ms-authorization]
-        MS2[ms-users]
-        MS3[ms-clients]
-        MS4[ms-sales]
-        MS5[ms-products]
-        MS6[ms-stock]
-        MS7[ms-payments]
-        MS8[ms-finance]
-        MS9[ms-reports]
-        MS10[ms-integration]
-        MS11[ms-notifications]
-        MS12[ms-audit]
-        MS13[ms-security]
-        MS14[ms-monitoring]
-    end
-
-    MS --> GW_IaaS
-    GW_IaaS[Gateway IaaS\nOrquestra tráfego para infraestrutura\n(rede, storage, banco, segurança)] --> AWS
-
-    subgraph AWS [Infraestrutura AWS (IaaS/PaaS)]
-        AWS1[EC2/EKS (Compute)]
-        AWS2[S3 (Storage)]
-        AWS3[RDS/DynamoDB (Banco de Dados)]
-        AWS4[IAM/WAF (Segurança)]
-        AWS5[CloudWatch (Monitoramento)]
-        AWS6[Lambda (Serverless)]
-    end
+                                  ┌───────────────────────────┐
+                                  │   Frontend (Flutter)      │
+                                  └───────────────────────────┘
+                                                │
+                         ┌──────────────────────┼─────────────────────────┐
+                         ▼                      ▼                         ▼
+                 ┌───────────────────┐  ┌───────────────────┐ ┌───────────────────────┐
+                 │   Android App     │  │     iOS App       │ │ Web (PDV, Dashboard)  │
+                 └───────────────────┘  └───────────────────┘ └───────────────────────┘
+                         │                      │                         │
+                         └───────────┬──────────┴───────────┬─────────────┘
+                                     ▼                      ▼
+                          ┌─────────────────────────────────────────────┐
+                          │   BFF (Backend for Frontend - Spring)       │
+                          │   Adapta APIs para cada tipo de cliente     │
+                          └─────────────────────────────────────────────┘
+                                                │
+                                                ▼
+                         ┌──────────────────────────────────────────────┐
+                         │  Gateway Business Layer (Spring)             │
+                         │  Regras de negócio, segurança, orquestração  │
+                         └──────────────────────────────────────────────┘
+                                                │
+                                                ▼
+                  ┌─────────────────────────────────────────────────────────────┐
+                  │                   Microsserviços (Spring Boot)              │
+                  │ ┌─────────────────────────────────────────────────────────┐ │
+                  │ │ ms-authorization   → autenticação, login, permissões    │ │
+                  │ │ ms-users           → gestão de usuários e perfis        │ │
+                  │ │ ms-clients         → cadastro de clientes, fidelidade   │ │
+                  │ │ ms-sales           → vendas PDV, NFC-e, promoções       │ │
+                  │ │ ms-products        → catálogo de produtos               │ │
+                  │ │ ms-stock           → controle de estoque, inventário    │ │
+                  │ │ ms-payments        → integração com meios de pagamento  │ │
+                  │ │ ms-finance         → fluxo de caixa, contas, bancos     │ │
+                  │ │ ms-reports         → relatórios, BI, dashboards         │ │
+                  │ │ ms-integration     → SEFAZ, ERP, sistemas externos      │ │
+                  │ │ ms-notifications   → alertas, push, e-mails             │ │
+                  │ │ ms-audit           → auditoria e logs                   │ │
+                  │ │ ms-security        → proteção contra fraudes            │ │
+                  │ │ ms-monitoring      → métricas e observabilidade         │ │
+                  │ └─────────────────────────────────────────────────────────┘ │
+                  │   Segmentos atendidos: mercados, padarias, escolas,         │
+                  │   depósitos de materiais, oficinas, funilarias, farmácias   │
+                  └─────────────────────────────────────────────────────────────┘
+                                               │
+                                               ▼
+                         ┌───────────────────────────────────────────┐
+                         │            Gateway IaaS                   │
+                         │   Orquestra tráfego para infraestrutura   │
+                         │   (rede, storage, banco, segurança)       │
+                         └───────────────────────────────────────────┘
+                                               │
+                                               ▼
+                 ┌───────────────────────────────────────────────────────────────┐
+                 │                Infraestrutura AWS (IaaS/PaaS)                 │
+                 │ ┌───────────────┬───────────────┬───────────────┬───────────┐ │
+                 │ │ EC2/EKS       │ S3 (Storage)  │ RDS/DynamoDB  │ IAM/WAF   │ │
+                 │ │ (Compute)     │ (Notas, docs) │ (Dados PDV)   │ Segurança │ │
+                 │ └───────────────┴───────────────┴───────────────┴───────────┘ │
+                 │        CloudWatch (Monitoramento) / Lambda (Serverless)       │
+                 └───────────────────────────────────────────────────────────────┘ 
