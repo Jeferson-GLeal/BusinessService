@@ -120,11 +120,17 @@ A arquitetura é composta por diversos microsserviços independentes, cada um re
                          └───────────────────────────────────────────┘
                                                │
                                                ▼
-                 ┌───────────────────────────────────────────────────────────────┐
-                 │                Infraestrutura AWS (IaaS/PaaS)                 │
-                 │ ┌───────────────┬───────────────┬───────────────┬───────────┐ │
-                 │ │ EC2/EKS       │ S3 (Storage)  │ RDS/DynamoDB  │ IAM/WAF   │ │
-                 │ │ (Compute)     │ (Notas, docs) │ (Dados PDV)   │ Segurança │ │
-                 │ └───────────────┴───────────────┴───────────────┴───────────┘ │
-                 │        CloudWatch (Monitoramento) / Lambda (Serverless)       │
-                 └───────────────────────────────────────────────────────────────┘ 
+         ┌───────────────────────────────────────────────────────────────────────────────┐
+         │                  Infraestrutura AWS (IaaS/PaaS + Serviços)                    │
+         │ ┌───────────────┬───────────────┬───────────────┬───────────┬───────────────┐ │
+         │ │ EC2/EKS       │ S3 (Storage)  │ RDS/DynamoDB  │ IAM/WAF   │ CloudWatch    │ │
+         │ │ (Compute)     │ (Notas, docs) │ (Dados PDV)   │ Segurança │ Monitoramento │ │
+         │ └───────────────┴───────────────┴───────────────┴───────────┴───────────────┘ │
+         │        Lambda (Serverless) / Step Functions (Orquestração)                    │
+         │ ┌───────────────────────────────┬───────────────────────────────────────────┐ │
+         │ │ SNS / SQS / EventBridge       │ SES / Pinpoint / API Gateway              │ │
+         │ │ (Mensageria & Eventos →       │ (Comunicação interna/externa →            │ │
+         │ │ suporte ao **ms-events**)     │ suporte ao **ms-communication**)          │ │
+         │ └───────────────────────────────┴────────────────────────────────── ────────┘ │
+         └───────────────────────────────────────────────────────────────────────────────┘
+
