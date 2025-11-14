@@ -104,9 +104,9 @@ A arquitetura é composta por diversos microsserviços independentes, cada um re
                           │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
                           │ │ ms-notifications │  │ ms-inventory     │  │ ms-audit         │  │ ms-events        │ │
                           │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
-                          │ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐ │
-                          │ │ ms-documents     │  │ ms-inventory     │  │ ms-audit         │  │ ms-communication │ │
-                          │ └──────────────────┘  └──────────────────┘  └──────────────────┘  └──────────────────┘ │
+                          │ ┌──────────────────┐  ┌──────────────────┐                                             │
+                          │ │ ms-documents     │  │ ms-communication │                                             │
+                          │ └──────────────────┘  └──────────────────┘                                             │
                           │                                                                                        │
                           │                 Segmentos atendidos: mercados, padarias, escolas,                      │
                           │                 depósitos de materiais, oficinas, funilarias, farmácias                │
